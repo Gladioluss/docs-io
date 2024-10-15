@@ -27,7 +27,7 @@ class AppSettings(BaseAppSettings):
 
         if isinstance(v, str):
             return v
-        return PostgresDsn.build(
+        a =PostgresDsn.build(
             scheme="postgresql+asyncpg",
             username=values.data.get("DATABASE_USER"),
             password=values.data.get("DATABASE_PASSWORD"),
@@ -35,6 +35,8 @@ class AppSettings(BaseAppSettings):
             port=int(values.data.get("DATABASE_PORT")),
             path=f"{values.data.get('DATABASE_NAME') or ''}",
         )
+        print(values.data.get("DATABASE_HOST"))
+        return a
 
     class Config:
         case_sensitive = True
