@@ -1,7 +1,14 @@
 from fastapi import FastAPI
 from app.core.config import settings
-
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(title=settings.API_TITLE)
 
-print(settings.ASYNC_DATABASE_URI)
+if settings.CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[str(origin) for origin in settings.CORS_ORIGINS],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
