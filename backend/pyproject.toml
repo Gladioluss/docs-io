@@ -16,6 +16,7 @@ alembic = "^1.13.3"
 asyncpg = "^0.29.0"
 loguru = "^0.7.2"
 uvicorn = "^0.32.0"
+pydantic-settings = "^2.5.2"
 
 
 [build-system]
